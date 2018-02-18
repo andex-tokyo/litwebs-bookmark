@@ -15,3 +15,10 @@ post '/create' do
     Bookmark.create(title: params[:title], url: params[:url])
     redirect '/'
 end
+
+get "/api/site" do
+    html = Nokogiri::HTML.parse(open(params[:url]))
+    title = html.css('title').text
+    data = {title: title}
+    json data
+end

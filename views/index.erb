@@ -27,5 +27,14 @@
     <input type="submit" value="追加" name="commit" class="btn btn-primary">
 </form>
 
+<script>
+  $('#url').change(function(){
+    $.get("/api/site", { url: $(this).val() },
+    function(data){
+      $('#title').val(data.title);
+    });
+  })
+</script>
+
 </body>
 </html>
